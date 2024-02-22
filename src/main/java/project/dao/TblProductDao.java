@@ -10,16 +10,27 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 import project.vo.ProductVo;
 
 public class TblProductDao {
     
+	public static final String DRIVER = "oracle.jdbc.driver.OracleDriver";
     public static final String URL ="jdbc:oracle:thin:@//localhost:1521/xe";
     public static final String USERNAME = "c##idev";
     private static final String PASSWORD = "1234";
 
-    private Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL, USERNAME, PASSWORD);
+    public static Connection getConnection(){
+
+        Connection conn = null;
+        try {
+            Class.forName(DRIVER);      
+            conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+        }catch(Exception e){
+            System.out.println("데이터베이스 연결 예외 발생\n\t : "+e.getMessage());
+        }
+
+        return conn;
     }
 
     //2. 카테고리로  검색하기 
@@ -90,4 +101,44 @@ public class TblProductDao {
 
         return map;
     }
+   
+    public List<ProductVo> allProducts() {
+        List<ProductVo> list = new ArrayList<>();
+        String sql = "select * from tbl_product";
+        try(
+            Connection connection = getConnection();      
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+        ){
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                list.add(new ProductVo(rs.getString(1), 
+                        rs.getString(2), 
+                        rs.getString(3),
+                        rs.getInt(4)));
+            }
+        }catch(SQLException e){
+            System.out.println("allProducts 예외 발생 : " + e.getMessage());
+        }
+
+        return list;
+    }
+
+	public void joinP(ProductVo vo) {
+		  String sql="insert into tbl_product(pcode,category,pname,price) " + 
+                  "values (?, ?, ?, ?)";
+      try (Connection connection = getConnection();     
+          PreparedStatement pstmt = connection.prepareStatement(sql);)
+          {   
+          
+              pstmt.setString(1, vo.getPcode());
+              pstmt.setString(2, vo.getCategory());
+              pstmt.setString(3, vo.getPname());
+              pstmt.setInt(4, vo.getPrice());
+
+              pstmt.executeUpdate();
+      } catch (SQLException e) {
+          System.out.println("join 실행 예외 발생 : " + e.getMessage());
+      }
+	}
+    
 }

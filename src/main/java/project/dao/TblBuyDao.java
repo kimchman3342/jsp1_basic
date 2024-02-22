@@ -14,14 +14,24 @@ import java.util.Map;
 import project.vo.BuyVo;
 import project.vo.CustomerBuyVo;
 
+
 public class TblBuyDao {
-    
+	public static final String DRIVER = "oracle.jdbc.driver.OracleDriver";
     public static final String URL ="jdbc:oracle:thin:@//localhost:1521/xe";
     public static final String USERNAME = "c##idev";
     private static final String PASSWORD = "1234";
 
-    private Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL, USERNAME, PASSWORD);
+    public static Connection getConnection(){
+
+        Connection conn = null;
+        try {
+            Class.forName(DRIVER);      
+            conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+        }catch(Exception e){
+            System.out.println("데이터베이스 연결 예외 발생\n\t : "+e.getMessage());
+        }
+
+        return conn;
     }
     //executeUpdate 메소드는 insert,update,delete 가 정상 실행(반영되 행 있으면)되면 1을 리턴, 
     //                       특히 update, delete 는 조건에 맞는 행이 없어서 반영된 행이 없으면 0을 리턴. 
@@ -180,4 +190,27 @@ public class TblBuyDao {
 
         return money;
     }
+   
+    public List<BuyVo> allBuys() {
+        List<BuyVo> list = new ArrayList<>();
+        String sql = "select * from tbl_buy";
+        try(
+            Connection connection = getConnection();       //auto close
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+        ){
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                list.add(new BuyVo(rs.getInt(1), 
+                        rs.getString(2), 
+                        rs.getString(3),
+                        rs.getInt(4), 
+                        rs.getDate(5)));
+            }
+        }catch(SQLException e){
+            System.out.println("allBuys 예외 발생 : " + e.getMessage());
+        }
+
+        return list;
+    }
+    
  }

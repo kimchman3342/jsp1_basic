@@ -7,9 +7,26 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>JSP1_Buys</title>
+<link rel="stylesheet" href="assets/css/select.css">
 </head>
 <body>
+	<h3>구매내역 전체 조회</h3>
+	<hr>
+	<ul>
+	<!-- list 이름의 애트리뷰트를 대상으로 합니다. : 애트리뷰트 저장은 서블릿에서 합니다. -->
+   <c:forEach items="${list}" var="vo" varStatus="status">
+		<li>        
+	        <ul class="row">
+	           <li><c:out value="${vo.pcode}" /></li>
+	           <li><c:out value="${vo.quantity}" /></li>
+	           <li><c:out value="${fn:toUpperCase(vo.customid)}" /></li>
+	           <li><fmt:formatDate value="${vo.buy_Date}" 
+	           				 pattern="yyyy-MM-dd a HH:mm:ss" /></li>
+	        </ul>
+		</li>        
+     </c:forEach>
+	</ul>
 
 </body>
 </html>

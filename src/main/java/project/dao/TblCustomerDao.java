@@ -11,7 +11,7 @@ import java.util.List;
 import project.vo.CustomerVo;
 
 public class TblCustomerDao {
-   public static final String DRIVER = "oracle.jdbc.driver.OracleDriver";
+    public static final String DRIVER = "oracle.jdbc.driver.OracleDriver";
     public static final String URL ="jdbc:oracle:thin:@//localhost:1521/xe";
     public static final String USERNAME = "c##idev";
     private static final String PASSWORD = "1234";
@@ -33,7 +33,7 @@ public class TblCustomerDao {
         // 할일1 : SQL 작성하기 (매개변수 표시 정확히 합시다.)
         String sql="insert into tbl_custom(custom_id,name,email,age,reg_date) " + 
                     "values (?, ?, ?, ?, sysdate)";
-        try (Connection connection = getConnection();       //auto close
+        try (Connection connection = getConnection();       
             PreparedStatement pstmt = connection.prepareStatement(sql);)
             {   
                 //할일2 : 매개변수 바인딩 (매개변수 타입에 맞는 메소드를 실행합시다.)
