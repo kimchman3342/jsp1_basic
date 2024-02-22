@@ -30,7 +30,8 @@
 %>
 
    <table>
-
+<!-- el 기호에서 지정된 이름 list 애트리뷰트를 가져오는 동작 : 
+		pageContext.getAttribute(list); 실행하기 -->
 
       <c:forEach items="${list}" var="vo" varStatus="status">
      
