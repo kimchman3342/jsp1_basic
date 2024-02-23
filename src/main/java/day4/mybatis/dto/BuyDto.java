@@ -14,8 +14,8 @@ import lombok.ToString;
 // 마이바티스에서 매핑할 때 객체는 기본생성자가 있으면 기본생성자로 없으면 커스텀 생성자로 객체 생성.
 @Getter
 @ToString
-@AllArgsConstructor			// 커스텀생성자 : 컬럼명과 변수명 일치 안해도 된다.
-							// 			   변수선언 순서와 컬럼순서는 일치해야 합니다.
+@AllArgsConstructor		
+							
 @EqualsAndHashCode			// 기본생성자 : 객체 생성 후 setter로 동작하므로 컬럼명과 변수명 일치 해야 함.
 public class BuyDto {
 	private int buy_Idx;

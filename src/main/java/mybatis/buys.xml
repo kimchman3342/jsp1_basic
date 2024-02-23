@@ -23,11 +23,19 @@
  	<update id="update" parameterType="java.util.Map">
  	UPDATE tbl_buy 
                 SET QUANTITY = #{quantity} 
-                WHERE BUY_IDX = #{buy_idx}
+                WHERE BUY_IDX = #{buy_Idx}
  	</update>
  	<delete id="delete" parameterType="int">
  	DELETE FROM tbl_buy 
-                WHERE BUY_IDX=#{buy_idx}
+                WHERE BUY_IDX=#{buy_Idx}
  	</delete>
+ 	<select id="selectCustomerBuyList" parameterType="String" resultType="CustomerBuyDto">
+ 	SELECT BUY_IDX ,tb.PCODE , PNAME, PRICE, QUANTITY ,BUY_DATE 
+                FROM TBL_BUY tb 
+                JOIN TBL_PRODUCT tp 
+                ON tb.PCODE = tp.PCODE 
+              	WHERE tb.CUSTOMID = #{customid} 
+                ORDER BY BUY_DATE DESC
+ 	</select>
  </mapper>
  

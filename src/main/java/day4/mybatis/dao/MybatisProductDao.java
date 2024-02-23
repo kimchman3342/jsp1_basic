@@ -6,7 +6,6 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import day4.mybatis.dto.CustomerDto;
 import day4.mybatis.dto.ProductDto;
 import mybatis.SqlSessionBean;
 
@@ -15,35 +14,20 @@ public class MybatisProductDao {
 	private SqlSessionFactory sessionFactory = SqlSessionBean.getSessionFactory();
 
 	   
-	   public List<ProductDto> selectAll(){
+	   public List<ProductDto> selectByCategory(String c){
 	      SqlSession sqlSession = sessionFactory.openSession();
-	      List<ProductDto> list = sqlSession.selectList("tblproduct.selectAll");
-	      return list;
-	   }
-	   
-	   
-	   public int insert(ProductDto vo) {
-	      SqlSession sqlSession = sessionFactory.openSession();
-	      int result = sqlSession.insert("tblproduct.insert",vo);
-	      sqlSession.commit();
+	      List<ProductDto> list = sqlSession.selectList("tblproduct.selectByCategory",c);
 	      sqlSession.close();
-	      return result;
+	      return list;
 	      
 	   }
-	   
-	   public int update(Map<String, Integer> map) {
-	      SqlSession sqlSession = sessionFactory.openSession();
-	      int result = sqlSession.update("tblproduct.update", map);
-	      sqlSession.commit();
-	      sqlSession.close();
-	      return result;
+	 
+	   public List<ProductDto> selectByPname(String c){
+		   SqlSession sqlSession = sessionFactory.openSession();
+		   List<ProductDto> list = sqlSession.selectList("tblproduct.selectByPname",c);
+		   sqlSession.close();
+		   return list;	   
 	   }
 	   
-	   public int delete(int productidx) {
-	      SqlSession sqlSession = sessionFactory.openSession();
-	      int result = sqlSession.delete("tblproduct.delete",productidx);
-	      sqlSession.commit();
-	      sqlSession.close();
-	      return result;
-	   }
-}
+	   
+   }

@@ -65,6 +65,7 @@ public class TblCustomerDao {
         }
     }
     //회원 탈퇴
+    
     public void delete(String customerId) {
 
         String sql=  "delete from tbl_custom where custom_id = ?";

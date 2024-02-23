@@ -13,39 +13,42 @@ import mybatis.SqlSessionBean;
 
 public class MybatisCustomerDao {
 	
-		  private SqlSessionFactory sessionFactory = SqlSessionBean.getSessionFactory();
 
-		   
-		   public List<CustomerDto> selectAll(){
+	private SqlSessionFactory sessionFactory = SqlSessionBean.getSessionFactory();
+
+		   public List<CustomerDto> allCustomers(){
 		      SqlSession sqlSession = sessionFactory.openSession();
-		      List<CustomerDto> list = sqlSession.selectList("tblcustomer.selectAll");
+		      List<CustomerDto> list = sqlSession.selectList("tblcustomer.allCustomers");
+		      sqlSession.close();
 		      return list;
 		   }
 		   
+			/* Map 사용
+			 * public List<CustomerDto> selectByNameAge(){ SqlSession sqlSession =
+			 * sessionFactory.openSession(); List<CustomerDto> list =
+			 * sqlSession.selectList("tblcustomer.selectByNameAge"); sqlSession.close();
+			 * return list; }
+			 */
 		   
-		   public int insert(CustomerDto vo) {
+		   public int delete(String cid) {
+			   SqlSession sqlSession = sessionFactory.openSession();
+			   int result =  sqlSession.delete("tblcustomer.delete",cid);
+			   sqlSession.commit();
+			   sqlSession.close();
+			   return result;
+		   }
+		   
+		   
+		   public int join(CustomerDto dto) {
 		      SqlSession sqlSession = sessionFactory.openSession();
-		      int result = sqlSession.insert("tblcustomer.insert",vo);
+		      int result = sqlSession.insert("tblcustomer.join",dto);
 		      sqlSession.commit();
 		      sqlSession.close();
 		      return result;
+		    
 		      
 		   }
 		   
-		   public int update(Map<String, Integer> map) {
-		      SqlSession sqlSession = sessionFactory.openSession();
-		      int result = sqlSession.update("tblcustomer.update", map);
-		      sqlSession.commit();
-		      sqlSession.close();
-		      return result;
-		   }
-		   
-		   public int delete(int customeridx) {
-		      SqlSession sqlSession = sessionFactory.openSession();
-		      int result = sqlSession.delete("tblcustomer.delete",customeridx);
-		      sqlSession.commit();
-		      sqlSession.close();
-		      return result;
-		   }
+		 
 		   
 }

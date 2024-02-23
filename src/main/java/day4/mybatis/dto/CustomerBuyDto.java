@@ -3,12 +3,23 @@ package day4.mybatis.dto;
 import java.sql.Date;
 import java.sql.Timestamp;
 
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
+@Getter
+@ToString
+@AllArgsConstructor			
+@EqualsAndHashCode	
 public class CustomerBuyDto {
-	private String customId;
-    private String name;
-    private String email;
-    private int age;
-    private Date reg_date;
+    private int buy_idx;
+    private String pcode;
+    private String pname;
+    private int price;
+    private int quantity;
+    private Timestamp buy_date;
+
 
 
 }
