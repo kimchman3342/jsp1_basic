@@ -135,10 +135,10 @@ public class TblCustomerDao {
        try (
              Connection connection = getConnection();       
              PreparedStatement pstmt = connection.prepareStatement(sql);){
-          pstmt.setString(1, name);
-          pstmt.setInt(2, age);
-          ResultSet rs = pstmt.executeQuery();
-          
+								          pstmt.setString(1, name);
+								          pstmt.setInt(2, age);
+								          ResultSet rs = pstmt.executeQuery();
+								          
           while (rs.next()) {
              list.add(new CustomerVo(rs.getString(1),
                                rs.getString(2),

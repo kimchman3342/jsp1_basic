@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import day4.mybatis.dao.MybatisBuyDao;
 import project.vo.BuyVo;
 import project.vo.CustomerBuyVo;
 
@@ -213,4 +216,5 @@ public class TblBuyDao {
         return list;
     }
     
+  
  }
