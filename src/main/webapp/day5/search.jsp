@@ -38,11 +38,18 @@
 	           <li><c:out value="${vo.category}" /></li>
 	           <li><c:out value="${vo.pcode}" /></li>
 	           <li><c:out value="${vo.pname}" /></li>
-	           <li><c:out value="${vo.price}" /></li>
+	           <li style="text-align : right;">
+	           <fmt:formatNumber value="${vo.price}" />
+	           </li>
 	        </ul>
 		</li>        
      </c:forEach>
 	</ul>
-	<script type="text/javascript" src = "assets/js/search.js"></script>
+	<script type="text/javascript" >
+	// js 파일에서는 서버 애트리뷰트를 가져올 수 없습니다.
+	// jsp 파일 안에 있는 script 태그에서만 가능합니다.
+		const temp = '${cate}'
+	</script>
+	<script type="text/javascript" src="asset/js/search.js"></script>
 </body>
 </html>
