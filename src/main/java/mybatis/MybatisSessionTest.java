@@ -16,9 +16,9 @@ import day4.mybatis.dto.ProductDto;
 public class MybatisSessionTest {
 
 	public static void main(String[] args) {
-//	testBuy();
+	testBuy();
 //	testProduct();
-	testCustomer();	
+//	testCustomer();	
 		
 	}
 	
