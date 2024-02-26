@@ -1,8 +1,8 @@
 <%@page import="project.dao.TblCustomerDao"%>
 <%@page import="project.vo.CustomerVo"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,26 +10,26 @@
 <title>3_INSERT</title>
 </head>
 <body>
-<p>2¹ø select Á¶È¸ °á°ú È®ÀÎ°ú °°ÀÌ ÀÌ¹ø¿¡´Â insert ½ÇÇàÇØ º¾´Ï´Ù.</p>
+<p>2ë²ˆ select ì¡°íšŒ ê²°ê³¼ í™•ì¸ê³¼ ê°™ì´ ì´ë²ˆì—ëŠ” insert ì‹¤í–‰í•´ ë´…ë‹ˆë‹¤.</p>
 <%
 
 	
-	CustomerVo vo = new CustomerVo("sanaa","±è»ç³ª","sana@gmail.com",23,null);
-	// dao »ý¼º	insert
+	CustomerVo vo = new CustomerVo("sanaa","ê¹€ì‚¬ë‚˜","sana@gmail.com",23,null);
+	// dao ìƒì„±	insert
 	TblCustomerDao dao = new TblCustomerDao();
 	dao.join(vo);
 %>
 
 	
 		
-	<h4>customorVo °´Ã¼</h4>
+	<h4>customorVo ê°ì²´</h4>
 	<table style="width:500px;">
 		<tr>
-			<th>¾ÆÀÌµð</th>
-			<th>ÀÌ¸§</th>
-			<th>ÀÌ¸ÞÀÏ</th>
-			<th>³ªÀÌ</th>
-			<th>°¡ÀÔ³¯Â¥</th>
+			<th>ì•„ì´ë””</th>
+			<th>ì´ë¦„</th>
+			<th>ì´ë©”ì¼</th>
+			<th>ë‚˜ì´</th>
+			<th>ê°€ìž…ë‚ ì§œ</th>
 		</tr>
 		<tr>
 			<td><%= vo.getCustomId() %></td>
@@ -39,13 +39,13 @@
 			<td><%= vo.getReg_date()%></td>
 		</tr>
 	</table>
-	<p>¾Æ·¡ ¸µÅ©·Î ÆäÀÌÁö ÀÌµ¿ÇØ¼­ insert ¿Ï·áµÆ´ÂÁö È®ÀÎÇØ º¾´Ï´Ù.</p>
-	<a href = "2_jdbc.jsp"> ÀüÃ¼ °í°´ Á¶È¸</a>
+	<p>ì•„ëž˜ ë§í¬ë¡œ íŽ˜ì´ì§€ ì´ë™í•´ì„œ insert ì™„ë£ŒëëŠ”ì§€ í™•ì¸í•´ ë´…ë‹ˆë‹¤.</p>
+	<a href = "2_jdbc.jsp"> ì „ì²´ ê³ ê° ì¡°íšŒ</a>
 	
 </body>
 </html>
-<!-- ´ÜÃàÅ° : ctrl + d (ÇÑÁÙ »èÁ¦) ctrl + alt + ¹æÇâÅ° (ÇÑ ÁÙ º¹»ç)
-			alt + ¹æÇâÅ°(ÁÙÀÌµ¿)  ctrl + shift + / (ÁÖ¼®)
-			shift + ¿£ÅÍ(´ÙÀ½ ÁÙ ÀÌµ¿)
-			ctrl + ½ºÆäÀÌ½º¹Ù(ÂüÁ¶, ÀÓÆ÷Æ®, ÀÚµ¿¿Ï¼º µî...)
+<!-- ë‹¨ì¶•í‚¤ : ctrl + d (í•œì¤„ ì‚­ì œ) ctrl + alt + ë°©í–¥í‚¤ (í•œ ì¤„ ë³µì‚¬)
+			alt + ë°©í–¥í‚¤(ì¤„ì´ë™)  ctrl + shift + / (ì£¼ì„)
+			shift + ì—”í„°(ë‹¤ìŒ ì¤„ ì´ë™)
+			ctrl + ìŠ¤íŽ˜ì´ìŠ¤ë°”(ì°¸ì¡°, ìž„í¬íŠ¸, ìžë™ì™„ì„± ë“±...)
  -->

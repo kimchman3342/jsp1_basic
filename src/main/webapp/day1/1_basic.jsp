@@ -1,7 +1,7 @@
 <%@page import="project.vo.CustomerVo"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,23 +9,23 @@
 <title>1_basic</title>
 </head>
 <body>
-<p>jsp¿¡¼­´Â html ÅÂ±×¿Í ÇÔ²² ÀÚ¹Ù ¸í·É¾î, º¯¼ö Ãâ·Â µîÀ» ÇÒ ¼ö ÀÖ½À´Ï´Ù.</p>
+<p>jspì—ì„œëŠ” html íƒœê·¸ì™€ í•¨ê»˜ ìžë°” ëª…ë ¹ì–´, ë³€ìˆ˜ ì¶œë ¥ ë“±ì„ í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.</p>
 <%
 
-	/* ÀÚ¹Ù¿¡¼­ ´Ù·ç¾ú´ø ¹è¿­, ¸®½ºÆ® ÄÃ·º¼Ç, VO °´Ã¼¸¦ ¼±¾ð */
-	String[] names = {"»ç³ª","³ª¿¬","¸ð¸ð","ÂêÀ§","´ÙÇö"};
-	List<String> list = List.of("»ç³ª","³ª¿¬","¸ð¸ð","ÂêÀ§","´ÙÇö");
-	CustomerVo vo = new CustomerVo("sana","±è»ç³ª","sana@gmail.com",23,null);
+	/* ìžë°”ì—ì„œ ë‹¤ë£¨ì—ˆë˜ ë°°ì—´, ë¦¬ìŠ¤íŠ¸ ì»¬ë ‰ì…˜, VO ê°ì²´ë¥¼ ì„ ì–¸ */
+	String[] names = {"ì‚¬ë‚˜","ë‚˜ì—°","ëª¨ëª¨","ì¯”ìœ„","ë‹¤í˜„"};
+	List<String> list = List.of("ì‚¬ë‚˜","ë‚˜ì—°","ëª¨ëª¨","ì¯”ìœ„","ë‹¤í˜„");
+	CustomerVo vo = new CustomerVo("sana","ê¹€ì‚¬ë‚˜","sana@gmail.com",23,null);
 
 %>
 
-	<h4>¹è¿­ names</h4>
+	<h4>ë°°ì—´ names</h4>
 	<ul>
-	<!-- ¿©±â¿¡ names ¹è¿­ ¿ä¼Ò °ªÀ» ÀÚ¹Ù ÄÚµå »ç¿ëÇÏ¿© ¹Ýº¹¹® Ãâ·Â  -->
+	<!-- ì—¬ê¸°ì— names ë°°ì—´ ìš”ì†Œ ê°’ì„ ìžë°” ì½”ë“œ ì‚¬ìš©í•˜ì—¬ ë°˜ë³µë¬¸ ì¶œë ¥  -->
 	
-	<h3>ÄÃ·º¼Ç</h3>
+	<h3>ì»¬ë ‰ì…˜</h3>
 	<%
-	for(int i = 0; i<names.length; i++){	// for ½ÃÀÛ
+	for(int i = 0; i<names.length; i++){	// for ì‹œìž‘
 	%>
 		<li><%= list.get(i)  %> </li>
 	
@@ -37,14 +37,14 @@
 	<hr>
 	
 		
-	<h4>customorVo °´Ã¼</h4>
+	<h4>customorVo ê°ì²´</h4>
 	<table style="width:500px;">
 		<tr>
-			<th>¾ÆÀÌµð</th>
-			<th>ÀÌ¸§</th>
-			<th>ÀÌ¸ÞÀÏ</th>
-			<th>³ªÀÌ</th>
-			<th>°¡ÀÔ³¯Â¥</th>
+			<th>ì•„ì´ë””</th>
+			<th>ì´ë¦„</th>
+			<th>ì´ë©”ì¼</th>
+			<th>ë‚˜ì´</th>
+			<th>ê°€ìž…ë‚ ì§œ</th>
 		</tr>
 		<tr>
 			<td><%= vo.getCustomId() %></td>
@@ -57,8 +57,8 @@
 	
 </body>
 </html>
-<!-- ´ÜÃàÅ° : ctrl + d (ÇÑÁÙ »èÁ¦) ctrl + alt + ¹æÇâÅ° (ÇÑ ÁÙ º¹»ç)
-			alt + ¹æÇâÅ°(ÁÙÀÌµ¿)  ctrl + shift + / (ÁÖ¼®)
-			shift + ¿£ÅÍ(´ÙÀ½ ÁÙ ÀÌµ¿)
-			ctrl + ½ºÆäÀÌ½º¹Ù(ÂüÁ¶, ÀÓÆ÷Æ®, ÀÚµ¿¿Ï¼º µî...)
+<!-- ë‹¨ì¶•í‚¤ : ctrl + d (í•œì¤„ ì‚­ì œ) ctrl + alt + ë°©í–¥í‚¤ (í•œ ì¤„ ë³µì‚¬)
+			alt + ë°©í–¥í‚¤(ì¤„ì´ë™)  ctrl + shift + / (ì£¼ì„)
+			shift + ì—”í„°(ë‹¤ìŒ ì¤„ ì´ë™)
+			ctrl + ìŠ¤íŽ˜ì´ìŠ¤ë°”(ì°¸ì¡°, ìž„í¬íŠ¸, ìžë™ì™„ì„± ë“±...)
  -->
