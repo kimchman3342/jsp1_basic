@@ -3,7 +3,6 @@ package day5.servlet;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale.Category;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -17,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import day4.mybatis.dao.MybatisProductDao;
+import day4.mybatis.dto.CateDto;
 import day4.mybatis.dto.ProductDto;
 
 @WebServlet(urlPatterns = {"/search.cc"}, description = "상품 검색")
@@ -36,13 +36,13 @@ public class ProductSearchServlet extends HttpServlet{
 		logger.info("[MyInfo]파라미터 확인 : {},{},{},{}", category,keyword,from,to);
 		
 		Map<String, Object> map = new HashMap<>();
-		if (category != null && category.length() != 0) {
+		if (category != null && category.trim().length() != 0) {
 			map.put("category", category);
 		}
-		if (keyword != null && keyword.length() != 0) {
+		if (keyword != null && keyword.trim().length() != 0) {
 			map.put("keyword", keyword.trim());
 		}
-		if (from != null && to.length() != 0) {
+		if (from != null && from.trim().length() != 0 && to !=null && to.trim().length() !=0) {
 			map.put("from", from.trim());
 			map.put("to", to.trim());
 		}
@@ -53,11 +53,11 @@ public class ProductSearchServlet extends HttpServlet{
 		List<ProductDto> list = dao.search(map);
 		req.setAttribute("list",list);
 		
-		List<String> cateList = List.of("A1","A2","B1","B2","C1");
+//		List<String> cateList = List.of("A1","A2","B1","B2","C1");		// to do : dao에서 조회하기
+		List<CateDto> cateList = dao.getCategories();
 		req.setAttribute("cateList", cateList);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/day5/search.jsp");
 		dispatcher.forward(req, resp);
 	}
-	
 }

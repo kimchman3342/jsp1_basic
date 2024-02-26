@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>JSP_Product</title>
-<link rel="stylesheet" href="assets/css/custom.css">
+<link rel="stylesheet" href="assets/css/select.css">
 </head>
 <body>
 	<h3>상품 조회 - day 3 products.jsp에 검색 기능 추가</h3>
@@ -18,19 +18,19 @@
 	<select name="category">
 	 	<option value="">카테고리 선택 </option>
 	 	<c:forEach items="${cateList }" var="cate">
-	 		<option value="${cate }"> <c:out value="${cate }"></c:out> </option>
+	 		<option value="${cate.code }"> <c:out value="${cate.name }"/></option>
 	 	</c:forEach>
 	</select>
-		<input type="text" name="keyword" placeholder="상품명 검색어 입력하세요.">	 	
+		<input type="text" name="keyword" placeholder="상품명 검색어 입력하세요." value="">	 	
 		<span style="padding-left : 10px;">가격대별</span>
 		<input type="text" name="from" placeholder="10000"> <b>~</b>	 	
 		<input type="text" name="to" placeholder="50000"> 
-		<button type="submit">조회</button>	 	
+		<button id="search" type="button">조회</button>	 	
 		<button id="selectAll" type="button" onclick="location.href='search.cc'">전체보기</button>	 	
 		</form>
 	</div>
 	<hr>
-	<ul>
+	<ul>+
 	<!-- list 이름의 애트리뷰트를 대상으로 합니다. : 애트리뷰트 저장은 서블릿에서 합니다. -->
    <c:forEach items="${list}" var="vo" varStatus="status">
 		<li>        

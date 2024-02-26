@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>JSP_Product</title>
-<link rel="stylesheet" href="assets/css/select.css">
+<link rel="stylesheet" href="assets/css/custom.css">
 </head>
 <body>
 	<h3>상품 전체 조회</h3>
