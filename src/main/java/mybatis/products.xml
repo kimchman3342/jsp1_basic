@@ -13,20 +13,27 @@
 					  -->
 	<select id="search" resultType="ProductDto" parameterType="java.util.Map">
 		select * from tbl_product
-		<!-- if 중 하나라도 조건식이 만들어 질때만 where가 붙습니다 -->
+		<!-- if 중 하나라도 조건식이 만들어 질때만 where 작성. 아래 if의 test 값은 조건식 입니다.-->
 		<where>
-		<!-- 아래 if의 test 값은 조건식 입니다. keyword 파라미터 값이 null이 아닐 때. -->
 		<!-- category 파라미터 값이 null이 아닐 때. -->
 			<if test="category!=null">
 				category = #{category}
-			<!-- 앞의 조건식 없으면 and는 trim -->
+			</if>
+			<!-- keyword 파라미터 값이 null이 아닐 때. -->
 			<if test="keyword!=null">
+				<!-- 앞의 조건식 없으면 and는 트림 -->
 				<trim prefix="and">	<!-- 이 위치에 and 문자열을 출력.  -->
-				pname like % || #{keyword} || '%'
+				pname like '%' || #{keyword} || '%'
 				</trim>
 			</if>
+		<!-- test 논리연산 : and, or -->
+			<if test="from!=null and to!=null">
+				<trim prefix="and">
+				price between #{from} and #{to}
+			</trim>
 			</if>
 		</where>
+		ORDER BY ${column}
 	</select>
 	
 	<select id="selectByCategory" parameterType="String" resultType="ProductDto">

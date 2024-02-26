@@ -32,7 +32,7 @@ public class MybatisProductDao {
 	   
 	   public List<ProductDto> search(Map<String, Object> map) {
 		   SqlSession sqlSession = sessionFactory.openSession();
-		   List<ProductDto> list = sqlSession.selectList("tblproduct.serch",map);
+		   List<ProductDto> list = sqlSession.selectList("tblproduct.search",map);
 		   sqlSession.close();
 		   return list;
 	   }
