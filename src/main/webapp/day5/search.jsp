@@ -47,7 +47,7 @@
 	</ul>
 	<script type="text/javascript" >
 	// js 파일에서는 서버 애트리뷰트를 가져올 수 없습니다.
-	// jsp 파일 안에 있는 script 태그에서만 가능합니다.
+	// 		jsp 파일 안에 있는 script 태그에서만 가능합니다.
 		const temp = '${cate}'
 	</script>
 	<script type="text/javascript" src="asset/js/search.js"></script>
