@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 //Mybatis 프레임웍의 클래스들..
 import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
